@@ -126,6 +126,8 @@
   </div>
 
   <script type="py">
+    from spellchecker import SpellChecker
+    spell = SpellChecker()
     from pyscript import document
     import random
     from js import alert
@@ -152,7 +154,47 @@
     "here", "hero", "high", "hill", "hire", "hold", "hole", "holy", "home", "hope",
     "host", "hour", "huge", "hung", "hunt", "hurt", "idea", "inch", "into", "iron",
     "item", "jack", "jane", "jean", "john", "join", "jump", "jury", "just", "keen",
-    "keep", "kent", "kept", "kick", "kill", "kind", "king", "knee", "knew", "know"
+    "keep", "kent", "kept", "kick", "kill", "kind", "king", "knee", "knew", "know",
+     "able", "acid", "aged", "also", "area", "army", "away", "baby", "back", "ball",
+    "band", "bank", "base", "bath", "bear", "beat", "been", "beer", "bell", "belt",
+    "best", "bill", "bird", "blow", "blue", "boat", "body", "bomb", "bond", "bone",
+    "book", "boom", "boot", "born", "boss", "both", "bowl", "bulk", "burn", "bush",
+    "busy", "call", "calm", "came", "camp", "card", "care", "case", "cash", "cast",
+    "cell", "chat", "chip", "city", "club", "coal", "coat", "code", "cold", "come",
+    "cook", "cool", "cope", "copy", "core", "cost", "crew", "crop", "dark", "data",
+    "date", "dawn", "days", "dead", "deal", "dean", "dear", "debt", "deep", "deny",
+    "desk", "dial", "diet", "disc", "disk", "does", "done", "door", "dose", "down",
+    "draw", "drop", "drug", "dual", "duke", "dust", "duty", "each", "earn", "ease",
+    "east", "easy", "edge", "else", "even", "ever", "evil", "exit", "face", "fact",
+    "fail", "fair", "fall", "farm", "fast", "fate", "fear", "feed", "feel", "feet",
+    "fell", "felt", "file", "fill", "film", "find", "fine", "fire", "firm", "fish",
+    "five", "flat", "flow", "food", "foot", "ford", "form", "fort", "four", "free",
+    "from", "fuel", "full", "fund", "gain", "game", "gate", "gave", "gear", "gene",
+    "gift", "girl", "give", "glad", "goal", "goes", "gold", "golf", "gone", "good",
+    "gray", "grew", "grey", "grow", "gulf", "hair", "half", "hall", "hand", "hang",
+    "hard", "harm", "hate", "have", "head", "hear", "heat", "held", "hell", "help",
+    "here", "hero", "high", "hill", "hire", "hold", "hole", "holy", "home", "hope",
+    "host", "hour", "huge", "hung", "hunt", "hurt", "idea", "inch", "into", "iron",
+    "item", "jack", "jane", "jean", "john", "join", "jump", "jury", "just", "keen",
+    "keep", "kent", "kept", "kick", "kill", "kind", "king", "knee", "knew", "know",
+    "lava", "mint", "nest", "oval", "pace", "quiz", "ramp", "sack", "tide", "urge",
+    "vain", "wade", "yarn", "zest", "arch", "bake", "clay", "dome", "envy", "fizz",
+    "glow", "hike", "icon", "jolt", "knob", "lamb", "mild", "numb", "ogle", "peep",
+    "quip", "rude", "soar", "tame", "ugly", "vibe", "wisp", "yell", "zone", "ally",
+    "brim", "cane", "dusk", "emit", "flee", "gaze", "hush", "idle", "jazz", "knot",
+    "lure", "moss", "nail", "opal", "pint", "quip", "rung", "sour", "twin", "urge",
+    "vain", "wilt", "yawn", "zinc", "aqua", "bump", "coil", "drip", "echo", "fume",
+    "golf", "hazy", "inch", "joke", "keel", "lisp", "maze", "neat", "ogle", "puff",
+    "quip", "roam", "slim", "torn", "urge", "vial", "wade", "yelp", "zany", "axis",
+    "bark", "cork", "dare", "earn", "fend", "gush", "hurl", "iris", "jade", "kale",
+    "lamb", "mire", "nook", "omen", "perk", "quip", "rave", "sift", "turf", "urge",
+    "vain", "warp", "yoke", "zoom", "avid", "bide", "clap", "dine", "envy", "fizz",
+    "gown", "hike", "itch", "jibe", "kudo", "lurk", "moth", "numb", "ogle", "pore",
+    "quip", "rife", "sway", "tame", "urge", "vibe", "wade", "yarn", "zest", "aloe",
+    "bask", "cusp", "dawn", "ease", "fizz", "gale", "hymn", "idea", "jolt", "knee",
+    "laze", "mull", "nape", "ogle", "pave", "quip", "rung", "sore", "tame", "urge",
+    "vain", "wisp", "yell", "zinc", "aunt", "bore", "cage", "dove", "etch", "fume",
+    "gory", "hazy", "idle", "jazz", "knot", "lure", "moss", "nail", "opal", "pint"
 ]
     mainword= random.choice(listofwords).upper()
 
@@ -180,125 +222,128 @@
       round += 1
       guess.clear()
       rawwhatisguess = document.getElementById("guess").value
-      whatisguess = rawwhatisguess.upper()
-      for i in range(4):
-        letter = whatisguess[i]
-        guess.append(letter)
-
-
-
-
-
-
-
-      if round == 1:
-        letter1 = document.getElementById("1")
-        letter2 = document.getElementById("2")
-        letter3 = document.getElementById("3")
-        letter4 = document.getElementById("4")
-      if round == 2:
-        letter1 = document.getElementById("5")
-        letter2 = document.getElementById("6")
-        letter3 = document.getElementById("7")
-        letter4 = document.getElementById("8")
-      if round == 3:
-        letter1 = document.getElementById("9")
-        letter2 = document.getElementById("10")
-        letter3 = document.getElementById("11")
-        letter4 = document.getElementById("12")
-      if round == 4:
-        letter1 = document.getElementById("13")
-        letter2 = document.getElementById("14")
-        letter3 = document.getElementById("15")
-        letter4 = document.getElementById("16")
-      if round == 5:
-        letter1 = document.getElementById("17")
-        letter2 = document.getElementById("18")
-        letter3 = document.getElementById("19")
-        letter4 = document.getElementById("20")
-
-
-
-
-      letter1.innerHTML = guess[0]
-      letter2.innerHTML = guess[1]
-      letter3.innerHTML = guess[2]
-      letter4.innerHTML = guess[3]
-
-         
-      tCount = {}
-      tCount = wCount.copy()
-
-      if guess == word:
-            letter1.classList.add("green")
-            letter2.classList.add("green")
-            letter3.classList.add("green")
-            letter4.classList.add("green")
-            alert("YOU WON!!!")
-            button = document.getElementById("button")
-            text_box = document.getElementById("guess")
-            text_box.style.display = "none"
-            button.style.display = "none"
-            quit()
-
-      else:
-        if guess[0] == word[0]:
-            letter1.classList.add("green")
-            tCount[guess[0]] -= 1
-        elif guess[0] in word:
-            if tCount[guess[0]] == 0:
-                letter1.classList.add("gray")
-            else:
-                letter1.classList.add("yellow")
+      if rawwhatisguess in spell:
+          whatisguess = rawwhatisguess.upper()
+          for i in range(4):
+            letter = whatisguess[i]
+            guess.append(letter)
+    
+    
+    
+    
+    
+    
+    
+          if round == 1:
+            letter1 = document.getElementById("1")
+            letter2 = document.getElementById("2")
+            letter3 = document.getElementById("3")
+            letter4 = document.getElementById("4")
+          if round == 2:
+            letter1 = document.getElementById("5")
+            letter2 = document.getElementById("6")
+            letter3 = document.getElementById("7")
+            letter4 = document.getElementById("8")
+          if round == 3:
+            letter1 = document.getElementById("9")
+            letter2 = document.getElementById("10")
+            letter3 = document.getElementById("11")
+            letter4 = document.getElementById("12")
+          if round == 4:
+            letter1 = document.getElementById("13")
+            letter2 = document.getElementById("14")
+            letter3 = document.getElementById("15")
+            letter4 = document.getElementById("16")
+          if round == 5:
+            letter1 = document.getElementById("17")
+            letter2 = document.getElementById("18")
+            letter3 = document.getElementById("19")
+            letter4 = document.getElementById("20")
+    
+    
+    
+    
+          letter1.innerHTML = guess[0]
+          letter2.innerHTML = guess[1]
+          letter3.innerHTML = guess[2]
+          letter4.innerHTML = guess[3]
+    
+             
+          tCount = {}
+          tCount = wCount.copy()
+    
+          if guess == word:
+                letter1.classList.add("green")
+                letter2.classList.add("green")
+                letter3.classList.add("green")
+                letter4.classList.add("green")
+                alert("YOU WON!!!")
+                button = document.getElementById("button")
+                text_box = document.getElementById("guess")
+                text_box.style.display = "none"
+                button.style.display = "none"
+                quit()
+    
+          else:
+            if guess[0] == word[0]:
+                letter1.classList.add("green")
                 tCount[guess[0]] -= 1
-        else:
-            letter1.classList.add("gray")
-        
-        if guess[1] == word[1]:
-            letter2.classList.add("green")
-            tCount[guess[1]] -= 1
-        elif guess[1] in word:
-            if tCount[guess[1]] == 0:
-                letter2.classList.add("gray")
+            elif guess[0] in word:
+                if tCount[guess[0]] == 0:
+                    letter1.classList.add("gray")
+                else:
+                    letter1.classList.add("yellow")
+                    tCount[guess[0]] -= 1
             else:
-                letter2.classList.add("yellow")
+                letter1.classList.add("gray")
+            
+            if guess[1] == word[1]:
+                letter2.classList.add("green")
                 tCount[guess[1]] -= 1
-        else:
-            letter2.classList.add("gray")  
-
-        if guess[2] == word[2]:
-            letter3.classList.add("green")
-            tCount[guess[2]] -= 1
-        elif guess[2] in word:
-            if tCount[guess[2]] == 0:
-                letter3.classList.add("gray")
+            elif guess[1] in word:
+                if tCount[guess[1]] == 0:
+                    letter2.classList.add("gray")
+                else:
+                    letter2.classList.add("yellow")
+                    tCount[guess[1]] -= 1
             else:
-                letter3.classList.add("yellow")
+                letter2.classList.add("gray")  
+    
+            if guess[2] == word[2]:
+                letter3.classList.add("green")
                 tCount[guess[2]] -= 1
-        else:
-            letter3.classList.add("gray")
-
-        if guess[3] == word[3]:
-            letter4.classList.add("green")
-            tCount[guess[3]] -= 1
-        elif guess[3] in word:
-            if tCount[guess[3]] == 0:
-                letter4.classList.add("gray")
+            elif guess[2] in word:
+                if tCount[guess[2]] == 0:
+                    letter3.classList.add("gray")
+                else:
+                    letter3.classList.add("yellow")
+                    tCount[guess[2]] -= 1
             else:
-                letter4.classList.add("yellow")
+                letter3.classList.add("gray")
+    
+            if guess[3] == word[3]:
+                letter4.classList.add("green")
                 tCount[guess[3]] -= 1
-        else:
-            letter4.classList.add("gray")
-
-        if round == 5:
-            alert(f"You did not get it the word was {mainword}")
-            button = document.getElementById("button")
-            text_box = document.getElementById("guess")
-            text_box.style.display = "none"
-            button.style.display = "none"
-
+            elif guess[3] in word:
+                if tCount[guess[3]] == 0:
+                    letter4.classList.add("gray")
+                else:
+                    letter4.classList.add("yellow")
+                    tCount[guess[3]] -= 1
+            else:
+                letter4.classList.add("gray")
+    
+            if round == 5:
+                alert(f"You did not get it the word was {mainword}")
+                button = document.getElementById("button")
+                text_box = document.getElementById("guess")
+                text_box.style.display = "none"
+                button.style.display = "none"
+    else:
+      alert("NOT A WORD")
   </script>
 </body>
 
 </html>
+
 
