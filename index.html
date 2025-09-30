@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PyScript 2025.8.1</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.8.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+  <style>
+   body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: white;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      grid-template-rows: repeat(5, 100px);
+      gap: 10px;
+    }
+
+    .blank {
+      border: 2px solid #2c3e50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: white;
+      font-family: sans-serif;
+    }
+    .green{
+      border: 2px solid #2c3e50;
+      background-color: green;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+      color: white;
+      font-family: sans-serif;
+
+    }
+    .yellow{
+      border: 2px solid #2c3e50;
+      background-color: rgb(163, 163, 1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+      color: white;
+      font-family: sans-serif;
+
+    }
+    .gray{
+      border: 2px solid #2c3e50;
+      background-color: gray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+      color: white;
+      font-family: sans-serif;
+
+    }
+   .input-box {
+      width: 300px;
+      height: 50px;
+      font-size: 24px;
+      text-align: center;
+      border: 2px solid #2c3e50;
+      background-color: #ffffff;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .submit-button {
+      margin-left: 200px;
+      width: 125px;
+      height: 55px;
+      font-size: 18px;
+      background-color: #3498db;
+      color: white;
+      border: 2px solid #2c3e50;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .submit-button:hover {
+      background-color: #2980b9;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <!-- 20 cells for 4x5 grid -->
+    <div id="1" class="blank"></div>
+    <div id="2" class="blank"></div>
+    <div id="3" class="blank"></div>
+    <div id="4" class="blank"></div>
+    <div id="5" class="blank"></div>
+    <div id="6" class="blank"></div>
+    <div id="7" class="blank"></div>
+    <div id="8" class="blank"></div>
+    <div id="9" class="blank"></div>
+    <div id="10" class="blank"></div>
+    <div id="11" class="blank"></div>
+    <div id="12" class="blank"></div>
+    <div id="13" class="blank"></div>
+    <div id="14" class="blank"></div>
+    <div id="15" class="blank"></div>
+    <div id="16" class="blank"></div>
+    <div id="17" class="blank"></div>
+    <div id="18" class="blank"></div>
+    <div id="19" class="blank"></div>
+    <div id="20" class="blank"></div>
+
+    <input id="guess" type="text" class="input-box" minlength="4" maxlength="4" placeholder="Type here">
+    <button type="button" py-click="main" class="submit-button"id = "button">Submit</button>
+    <div id="output" style="margin-top:20px; font-size:18px;"></div>
+  </div>
+
+  <script type="py">
+    from pyscript import document
+    import random
+    from js import alert
+
+    listofwords = [
+    "able", "acid", "aged", "also", "area", "army", "away", "baby", "back", "ball",
+    "band", "bank", "base", "bath", "bear", "beat", "been", "beer", "bell", "belt",
+    "best", "bill", "bird", "blow", "blue", "boat", "body", "bomb", "bond", "bone",
+    "book", "boom", "boot", "born", "boss", "both", "bowl", "bulk", "burn", "bush",
+    "busy", "call", "calm", "came", "camp", "card", "care", "case", "cash", "cast",
+    "cell", "chat", "chip", "city", "club", "coal", "coat", "code", "cold", "come",
+    "cook", "cool", "cope", "copy", "core", "cost", "crew", "crop", "dark", "data",
+    "date", "dawn", "days", "dead", "deal", "dean", "dear", "debt", "deep", "deny",
+    "desk", "dial", "diet", "disc", "disk", "does", "done", "door", "dose", "down",
+    "draw", "drop", "drug", "dual", "duke", "dust", "duty", "each", "earn", "ease",
+    "east", "easy", "edge", "else", "even", "ever", "evil", "exit", "face", "fact",
+    "fail", "fair", "fall", "farm", "fast", "fate", "fear", "feed", "feel", "feet",
+    "fell", "felt", "file", "fill", "film", "find", "fine", "fire", "firm", "fish",
+    "five", "flat", "flow", "food", "foot", "ford", "form", "fort", "four", "free",
+    "from", "fuel", "full", "fund", "gain", "game", "gate", "gave", "gear", "gene",
+    "gift", "girl", "give", "glad", "goal", "goes", "gold", "golf", "gone", "good",
+    "gray", "grew", "grey", "grow", "gulf", "hair", "half", "hall", "hand", "hang",
+    "hard", "harm", "hate", "have", "head", "hear", "heat", "held", "hell", "help",
+    "here", "hero", "high", "hill", "hire", "hold", "hole", "holy", "home", "hope",
+    "host", "hour", "huge", "hung", "hunt", "hurt", "idea", "inch", "into", "iron",
+    "item", "jack", "jane", "jean", "john", "join", "jump", "jury", "just", "keen",
+    "keep", "kent", "kept", "kick", "kill", "kind", "king", "knee", "knew", "know"
+]
+    mainword= random.choice(listofwords).upper()
+
+    round = 0
+
+    word = []
+    guess = []
+
+    for i in range(4):
+      letter = mainword[i]
+      word.append(letter)
+
+    wCount= {
+         }
+
+    for index in range(4):
+      letter = word[index]
+      if wCount.get(letter) == None:
+        wCount[letter] = 1
+      else:
+        wCount[letter] += 1
+
+    def main(args):
+      global round
+      round += 1
+      guess.clear()
+      rawwhatisguess = document.getElementById("guess").value
+      whatisguess = rawwhatisguess.upper()
+      for i in range(4):
+        letter = whatisguess[i]
+        guess.append(letter)
+
+
+
+
+
+
+
+      if round == 1:
+        letter1 = document.getElementById("1")
+        letter2 = document.getElementById("2")
+        letter3 = document.getElementById("3")
+        letter4 = document.getElementById("4")
+      if round == 2:
+        letter1 = document.getElementById("5")
+        letter2 = document.getElementById("6")
+        letter3 = document.getElementById("7")
+        letter4 = document.getElementById("8")
+      if round == 3:
+        letter1 = document.getElementById("9")
+        letter2 = document.getElementById("10")
+        letter3 = document.getElementById("11")
+        letter4 = document.getElementById("12")
+      if round == 4:
+        letter1 = document.getElementById("13")
+        letter2 = document.getElementById("14")
+        letter3 = document.getElementById("15")
+        letter4 = document.getElementById("16")
+      if round == 5:
+        letter1 = document.getElementById("17")
+        letter2 = document.getElementById("18")
+        letter3 = document.getElementById("19")
+        letter4 = document.getElementById("20")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      letter1.innerHTML = guess[0]
+      letter2.innerHTML = guess[1]
+      letter3.innerHTML = guess[2]
+      letter4.innerHTML = guess[3]
+
+         
+      tCount = {}
+      tCount = wCount.copy()
+
+      if guess == word:
+            letter1.classList.add("green")
+            letter2.classList.add("green")
+            letter3.classList.add("green")
+            letter4.classList.add("green")
+            alert("YOU WON!!!")
+            button = document.getElementById("button")
+            text_box = document.getElementById("guess")
+            text_box.style.display = "none"
+            button.style.display = "none"
+
+      else:
+        if guess[0] == word[0]:
+            letter1.classList.add("green")
+            tCount[guess[0]] -= 1
+        elif guess[0] in word:
+            if tCount[guess[0]] == 0:
+                letter1.classList.add("gray")
+            else:
+                letter1.classList.add("yellow")
+                tCount[guess[0]] -= 1
+        else:
+            letter1.classList.add("gray")
+        
+        if guess[1] == word[1]:
+            letter2.classList.add("green")
+            tCount[guess[1]] -= 1
+        elif guess[1] in word:
+            if tCount[guess[1]] == 0:
+                letter2.classList.add("gray")
+            else:
+                letter2.classList.add("yellow")
+                tCount[guess[1]] -= 1
+        else:
+            letter2.classList.add("gray")  
+
+        if guess[2] == word[2]:
+            letter3.classList.add("green")
+            tCount[guess[2]] -= 1
+        elif guess[2] in word:
+            if tCount[guess[2]] == 0:
+                letter3.classList.add("gray")
+            else:
+                letter3.classList.add("yellow")
+                tCount[guess[2]] -= 1
+        else:
+            letter3.classList.add("gray")
+
+        if guess[3] == word[3]:
+            letter4.classList.add("green")
+            tCount[guess[3]] -= 1
+        elif guess[3] in word:
+            if tCount[guess[3]] == 0:
+                letter4.classList.add("gray")
+            else:
+                letter4.classList.add("yellow")
+                tCount[guess[3]] -= 1
+        else:
+            letter4.classList.add("gray")
+
+
+  </script>
+</body>
+</html>
