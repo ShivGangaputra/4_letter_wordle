@@ -216,7 +216,13 @@
         letter2 = document.getElementById("18")
         letter3 = document.getElementById("19")
         letter4 = document.getElementById("20")
-
+      if round == 6:
+        alert(f"You did not get it the word was {mainword}")
+        button = document.getElementById("button")
+        text_box = document.getElementById("guess")
+        text_box.style.display = "none"
+        button.style.display = "none"
+        
 
 
 
@@ -304,4 +310,5 @@
 
   </script>
 </body>
+
 </html>
