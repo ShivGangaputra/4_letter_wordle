@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>PyScript 2025.8.1</title>
+    <title>4-letter-wordle</title>
     <link rel="stylesheet" href="https://pyscript.net/releases/2025.8.1/core.css" />
     <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
   <style>
@@ -152,7 +152,27 @@
     "here", "hero", "high", "hill", "hire", "hold", "hole", "holy", "home", "hope",
     "host", "hour", "huge", "hung", "hunt", "hurt", "idea", "inch", "into", "iron",
     "item", "jack", "jane", "jean", "john", "join", "jump", "jury", "just", "keen",
-    "keep", "kent", "kept", "kick", "kill", "kind", "king", "knee", "knew", "know"
+    "keep", "kent", "kept", "kick", "kill", "kind", "king", "knee", "knew", "know",
+    "lava", "mint", "nest", "oval", "pace", "quiz", "ramp", "sack", "tide", "urge",
+    "vain", "wade", "yarn", "zest", "arch", "bake", "clay", "dome", "envy", "fizz",
+    "glow", "hike", "icon", "jolt", "knob", "lamb", "mild", "numb", "ogle", "peep",
+    "quip", "rude", "soar", "tame", "ugly", "vibe", "wisp", "yell", "zone", "ally",
+    "brim", "cane", "dusk", "emit", "flee", "gaze", "hush", "idle", "jazz", "knot",
+    "lure", "moss", "nail", "opal", "pint", "quip", "rung", "sour", "twin", "urge",
+    "vain", "wilt", "yawn", "zinc", "aqua", "bump", "coil", "drip", "echo", "fume",
+    "golf", "hazy", "inch", "joke", "keel", "lisp", "maze", "neat", "ogle", "puff",
+    "quip", "roam", "slim", "torn", "urge", "vial", "wade", "yelp", "zany", "axis",
+    "bark", "cork", "dare", "earn", "fend", "gush", "hurl", "iris", "jade", "kale",
+    "lamb", "mire", "nook", "omen", "perk", "quip", "rave", "sift", "turf", "urge",
+    "vain", "warp", "yoke", "zoom", "avid", "bide", "clap", "dine", "envy", "fizz",
+    "gown", "hike", "itch", "jibe", "kudo", "lurk", "moth", "numb", "ogle", "pore",
+    "quip", "rife", "sway", "tame", "urge", "vibe", "wade", "yarn", "zest", "aloe",
+    "bask", "cusp", "dawn", "ease", "fizz", "gale", "hymn", "idea", "jolt", "knee",
+    "laze", "mull", "nape", "ogle", "pave", "quip", "rung", "sore", "tame", "urge",
+    "vain", "wisp", "yell", "zinc", "aunt", "bore", "cage", "dove", "etch", "fume",
+    "gory", "hazy", "idle", "jazz", "knot", "lure", "moss", "nail", "opal", "pint"
+]
+
 ]
     mainword= random.choice(listofwords).upper()
 
@@ -185,12 +205,6 @@
         letter = whatisguess[i]
         guess.append(letter)
 
-
-
-
-
-
-
       if round == 1:
         letter1 = document.getElementById("1")
         letter2 = document.getElementById("2")
@@ -216,21 +230,6 @@
         letter2 = document.getElementById("18")
         letter3 = document.getElementById("19")
         letter4 = document.getElementById("20")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       letter1.innerHTML = guess[0]
       letter2.innerHTML = guess[1]
@@ -301,6 +300,12 @@
         else:
             letter4.classList.add("gray")
 
+        if round == 5:
+          alert(f"YOU DID NOT GET IT THE WORD WAS [{mainword}]")
+          button = document.getElementById("button")
+          text_box = document.getElementById("guess")
+          text_box.style.display = "none"
+          button.style.display = "none"
 
   </script>
 </body>
