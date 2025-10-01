@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>4-Letter-Wordle</title>
+    <title>PyScript 2025.8.1</title>
     <link rel="stylesheet" href="https://pyscript.net/releases/2025.8.1/core.css" />
     <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
   <style>
@@ -152,47 +152,7 @@
     "here", "hero", "high", "hill", "hire", "hold", "hole", "holy", "home", "hope",
     "host", "hour", "huge", "hung", "hunt", "hurt", "idea", "inch", "into", "iron",
     "item", "jack", "jane", "jean", "john", "join", "jump", "jury", "just", "keen",
-    "keep", "kent", "kept", "kick", "kill", "kind", "king", "knee", "knew", "know",
-     "able", "acid", "aged", "also", "area", "army", "away", "baby", "back", "ball",
-    "band", "bank", "base", "bath", "bear", "beat", "been", "beer", "bell", "belt",
-    "best", "bill", "bird", "blow", "blue", "boat", "body", "bomb", "bond", "bone",
-    "book", "boom", "boot", "born", "boss", "both", "bowl", "bulk", "burn", "bush",
-    "busy", "call", "calm", "came", "camp", "card", "care", "case", "cash", "cast",
-    "cell", "chat", "chip", "city", "club", "coal", "coat", "code", "cold", "come",
-    "cook", "cool", "cope", "copy", "core", "cost", "crew", "crop", "dark", "data",
-    "date", "dawn", "days", "dead", "deal", "dean", "dear", "debt", "deep", "deny",
-    "desk", "dial", "diet", "disc", "disk", "does", "done", "door", "dose", "down",
-    "draw", "drop", "drug", "dual", "duke", "dust", "duty", "each", "earn", "ease",
-    "east", "easy", "edge", "else", "even", "ever", "evil", "exit", "face", "fact",
-    "fail", "fair", "fall", "farm", "fast", "fate", "fear", "feed", "feel", "feet",
-    "fell", "felt", "file", "fill", "film", "find", "fine", "fire", "firm", "fish",
-    "five", "flat", "flow", "food", "foot", "ford", "form", "fort", "four", "free",
-    "from", "fuel", "full", "fund", "gain", "game", "gate", "gave", "gear", "gene",
-    "gift", "girl", "give", "glad", "goal", "goes", "gold", "golf", "gone", "good",
-    "gray", "grew", "grey", "grow", "gulf", "hair", "half", "hall", "hand", "hang",
-    "hard", "harm", "hate", "have", "head", "hear", "heat", "held", "hell", "help",
-    "here", "hero", "high", "hill", "hire", "hold", "hole", "holy", "home", "hope",
-    "host", "hour", "huge", "hung", "hunt", "hurt", "idea", "inch", "into", "iron",
-    "item", "jack", "jane", "jean", "john", "join", "jump", "jury", "just", "keen",
-    "keep", "kent", "kept", "kick", "kill", "kind", "king", "knee", "knew", "know",
-    "lava", "mint", "nest", "oval", "pace", "quiz", "ramp", "sack", "tide", "urge",
-    "vain", "wade", "yarn", "zest", "arch", "bake", "clay", "dome", "envy", "fizz",
-    "glow", "hike", "icon", "jolt", "knob", "lamb", "mild", "numb", "ogle", "peep",
-    "quip", "rude", "soar", "tame", "ugly", "vibe", "wisp", "yell", "zone", "ally",
-    "brim", "cane", "dusk", "emit", "flee", "gaze", "hush", "idle", "jazz", "knot",
-    "lure", "moss", "nail", "opal", "pint", "quip", "rung", "sour", "twin", "urge",
-    "vain", "wilt", "yawn", "zinc", "aqua", "bump", "coil", "drip", "echo", "fume",
-    "golf", "hazy", "inch", "joke", "keel", "lisp", "maze", "neat", "ogle", "puff",
-    "quip", "roam", "slim", "torn", "urge", "vial", "wade", "yelp", "zany", "axis",
-    "bark", "cork", "dare", "earn", "fend", "gush", "hurl", "iris", "jade", "kale",
-    "lamb", "mire", "nook", "omen", "perk", "quip", "rave", "sift", "turf", "urge",
-    "vain", "warp", "yoke", "zoom", "avid", "bide", "clap", "dine", "envy", "fizz",
-    "gown", "hike", "itch", "jibe", "kudo", "lurk", "moth", "numb", "ogle", "pore",
-    "quip", "rife", "sway", "tame", "urge", "vibe", "wade", "yarn", "zest", "aloe",
-    "bask", "cusp", "dawn", "ease", "fizz", "gale", "hymn", "idea", "jolt", "knee",
-    "laze", "mull", "nape", "ogle", "pave", "quip", "rung", "sore", "tame", "urge",
-    "vain", "wisp", "yell", "zinc", "aunt", "bore", "cage", "dove", "etch", "fume",
-    "gory", "hazy", "idle", "jazz", "knot", "lure", "moss", "nail", "opal", "pint"
+    "keep", "kent", "kept", "kick", "kill", "kind", "king", "knee", "knew", "know"
 ]
     mainword= random.choice(listofwords).upper()
 
@@ -260,6 +220,18 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
       letter1.innerHTML = guess[0]
       letter2.innerHTML = guess[1]
       letter3.innerHTML = guess[2]
@@ -279,7 +251,6 @@
             text_box = document.getElementById("guess")
             text_box.style.display = "none"
             button.style.display = "none"
-            quit()
 
       else:
         if guess[0] == word[0]:
@@ -330,17 +301,7 @@
         else:
             letter4.classList.add("gray")
 
-        if round == 5:
-            alert(f"You did not get it the word was {mainword}")
-            button = document.getElementById("button")
-            text_box = document.getElementById("guess")
-            text_box.style.display = "none"
-            button.style.display = "none"
+
   </script>
 </body>
-
 </html>
-
-
-
-
