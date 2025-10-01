@@ -197,119 +197,108 @@
         wCount[letter] += 1
 
     def main(args):
-      global round
-      round += 1
-      guess.clear()
-      rawwhatisguess = document.getElementById("guess").value
-      whatisguess = rawwhatisguess.upper()
-      for i in range(4):
-        letter = whatisguess[i]
-        guess.append(letter)
-
-      if round == 1:
-        letter1 = document.getElementById("1")
-        letter2 = document.getElementById("2")
-        letter3 = document.getElementById("3")
-        letter4 = document.getElementById("4")
-      if round == 2:
-        letter1 = document.getElementById("5")
-        letter2 = document.getElementById("6")
-        letter3 = document.getElementById("7")
-        letter4 = document.getElementById("8")
-      if round == 3:
-        letter1 = document.getElementById("9")
-        letter2 = document.getElementById("10")
-        letter3 = document.getElementById("11")
-        letter4 = document.getElementById("12")
-      if round == 4:
-        letter1 = document.getElementById("13")
-        letter2 = document.getElementById("14")
-        letter3 = document.getElementById("15")
-        letter4 = document.getElementById("16")
-      if round == 5:
-        letter1 = document.getElementById("17")
-        letter2 = document.getElementById("18")
-        letter3 = document.getElementById("19")
-        letter4 = document.getElementById("20")
-
-      letter1.innerHTML = guess[0]
-      letter2.innerHTML = guess[1]
-      letter3.innerHTML = guess[2]
-      letter4.innerHTML = guess[3]
-
-         
-      tCount = {}
-      tCount = wCount.copy()
-
-      if guess == word:
-            letter1.classList.add("green")
-            letter2.classList.add("green")
-            letter3.classList.add("green")
-            letter4.classList.add("green")
-            alert("YOU WON!!!")
-            button = document.getElementById("button")
-            text_box = document.getElementById("guess")
-            text_box.style.display = "none"
-            button.style.display = "none"
-
-      else:
+        global round
+        round += 1
+        guess.clear()
+        rawwhatisguess = document.getElementById("guess").value
+        whatisguess = rawwhatisguess.upper()
+    
+        for i in range(4):
+            guess.append(whatisguess[i])
+    
+        if round == 1:
+            letter1 = document.getElementById("1")
+            letter2 = document.getElementById("2")
+            letter3 = document.getElementById("3")
+            letter4 = document.getElementById("4")
+        elif round == 2:
+            letter1 = document.getElementById("5")
+            letter2 = document.getElementById("6")
+            letter3 = document.getElementById("7")
+            letter4 = document.getElementById("8")
+        elif round == 3:
+            letter1 = document.getElementById("9")
+            letter2 = document.getElementById("10")
+            letter3 = document.getElementById("11")
+            letter4 = document.getElementById("12")
+        elif round == 4:
+            letter1 = document.getElementById("13")
+            letter2 = document.getElementById("14")
+            letter3 = document.getElementById("15")
+            letter4 = document.getElementById("16")
+        elif round == 5:
+            letter1 = document.getElementById("17")
+            letter2 = document.getElementById("18")
+            letter3 = document.getElementById("19")
+            letter4 = document.getElementById("20")
+    
+    
+        letter1.innerHTML = guess[0]
+        letter2.innerHTML = guess[1]
+        letter3.innerHTML = guess[2]
+        letter4.innerHTML = guess[3]
+    
+        
+        tCount = wCount.copy()
+    
+        
         if guess[0] == word[0]:
             letter1.classList.add("green")
             tCount[guess[0]] -= 1
-        elif guess[0] in word:
-            if tCount[guess[0]] == 0:
-                letter1.classList.add("gray")
-            else:
-                letter1.classList.add("yellow")
-                tCount[guess[0]] -= 1
-        else:
-            letter1.classList.add("gray")
-        
         if guess[1] == word[1]:
             letter2.classList.add("green")
             tCount[guess[1]] -= 1
-        elif guess[1] in word:
-            if tCount[guess[1]] == 0:
-                letter2.classList.add("gray")
-            else:
-                letter2.classList.add("yellow")
-                tCount[guess[1]] -= 1
-        else:
-            letter2.classList.add("gray")  
-
         if guess[2] == word[2]:
             letter3.classList.add("green")
             tCount[guess[2]] -= 1
-        elif guess[2] in word:
-            if tCount[guess[2]] == 0:
-                letter3.classList.add("gray")
-            else:
-                letter3.classList.add("yellow")
-                tCount[guess[2]] -= 1
-        else:
-            letter3.classList.add("gray")
-
         if guess[3] == word[3]:
             letter4.classList.add("green")
             tCount[guess[3]] -= 1
-        elif guess[3] in word:
-            if tCount[guess[3]] == 0:
-                letter4.classList.add("gray")
+    
+       
+        if not letter1.classList.contains("green"):
+            if guess[0] in word and tCount.get(guess[0], 0) > 0:
+                letter1.classList.add("yellow")
+                tCount[guess[0]] -= 1
             else:
+                letter1.classList.add("gray")
+    
+        if not letter2.classList.contains("green"):
+            if guess[1] in word and tCount.get(guess[1], 0) > 0:
+                letter2.classList.add("yellow")
+                tCount[guess[1]] -= 1
+            else:
+                letter2.classList.add("gray")
+    
+        if not letter3.classList.contains("green"):
+            if guess[2] in word and tCount.get(guess[2], 0) > 0:
+                letter3.classList.add("yellow")
+                tCount[guess[2]] -= 1
+            else:
+                letter3.classList.add("gray")
+    
+        if not letter4.classList.contains("green"):
+            if guess[3] in word and tCount.get(guess[3], 0) > 0:
                 letter4.classList.add("yellow")
                 tCount[guess[3]] -= 1
-        else:
-            letter4.classList.add("gray")
-
-        if round == 5:
-          alert(f"YOU DID NOT GET IT THE WORD WAS [{mainword}]")
-          button = document.getElementById("button")
-          text_box = document.getElementById("guess")
-          text_box.style.display = "none"
-          button.style.display = "none"
+            else:
+                letter4.classList.add("gray")
+    
+        
+        if guess == word:
+            alert("YOU WON!!!")
+            document.getElementById("guess").style.display = "none"
+            document.getElementById("button").style.display = "none"
+    
+        
+        if round == 5 and guess != word:
+            alert(f"YOU DID NOT GET IT. THE WORD WAS [{mainword}]")
+            document.getElementById("guess").style.display = "none"
+            document.getElementById("button").style.display = "none"
 
   </script>
 </body>
 </html>
+
 
 
